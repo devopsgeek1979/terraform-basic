@@ -1,0 +1,15 @@
+name: Terraform CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2
+      - run: cd terraform/aws && terraform init
+      - run: cd terraform/azure && terraform init
